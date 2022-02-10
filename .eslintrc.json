@@ -20,8 +20,6 @@
       "import/extensions": "off",
       "import/prefer-default-export": "off",
       "camelcase": "off",
-    //  "no-extra-semi": "off",
-    //   "semi":"off",
       "no-useless-constructor": "off",
       "no-empty-function": "off",
       "no-unused-vars": "off"

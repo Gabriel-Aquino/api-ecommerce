@@ -12,6 +12,6 @@ export class CreateClientTablesController implements Controller {
     const { name } = httpRequest.body;
     const createClientTable = await createClientTablesService.execute({ name });
 
-    return response.status(200).json(createClientTable);
+    return response.status(200).json(createClientTable) as HttpResponse;
   }
 }
