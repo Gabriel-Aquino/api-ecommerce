@@ -1,6 +1,6 @@
 import { BaseEntity } from 'src/shared/utils/base-entity';
 
-export interface Repository <BaseDTO, A extends BaseEntity> {
+export interface IRepository<BaseDTO, A extends BaseEntity> {
   create(dto: BaseDTO): Promise<A>;
   find(): Promise<A[]>;
   findById(id: string): Promise<A | undefined>;

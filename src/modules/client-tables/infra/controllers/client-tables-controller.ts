@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { Controller } from 'src/shared/presentation/protocols/controller';
 import { HttpRequest, HttpResponse } from 'src/shared/presentation/protocols/http';
-import { ClientTablesRepository } from '../../repository/client-tables-repository';
+import { ClientTablesRepository } from '../../repositories/client-tables-repository';
 import { CreateClientTableService } from '../../services/create-client-tables-service';
 
 export class CreateClientTablesController implements Controller {

@@ -1,7 +1,7 @@
 import { MissingParamError } from 'src/shared/errors/missing-param-error';
 import { ClientTablesDTO } from '../dtos/client-tables-dto';
 import { ClientTables } from '../infra/typeorm/entities/client-tables-entity';
-import { ClientTablesRepositoryInterface } from '../repository/protocols/client-tables-interface-repository';
+import { ClientTablesRepositoryInterface } from '../repositories/contracts/client-tables-interface-repository';
 
 export class CreateClientTableService {
   private clientTablesRepository: ClientTablesRepositoryInterface;

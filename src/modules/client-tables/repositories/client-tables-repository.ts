@@ -1,7 +1,7 @@
 import { getRepository, Repository } from 'typeorm';
 import { ClientTablesDTO } from '../dtos/client-tables-dto';
 import { ClientTables } from '../infra/typeorm/entities/client-tables-entity';
-import { ClientTablesRepositoryInterface } from './protocols/client-tables-interface-repository';
+import { ClientTablesRepositoryInterface } from './contracts/client-tables-interface-repository';
 
 export class ClientTablesRepository implements ClientTablesRepositoryInterface {
   private ormRepository: Repository<ClientTables>;
