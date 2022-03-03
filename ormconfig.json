@@ -7,11 +7,11 @@
   "database": "ecommerce",
   "entities": [
     "./src/modules/**/infra/typeorm/entities/*.ts"
- ],
- "migrations": [
+  ],
+  "migrations": [
     "./src/shared/infra/typeorm/migrations/*.ts"
- ],
- "cli": {
-  "migrationsDir": "./src/shared/infra/typeorm/migrations"
-}
+  ],
+  "cli": {
+    "migrationsDir": "./src/shared/infra/typeorm/migrations"
+  }
 }

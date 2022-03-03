@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import clientTablesRoute from 'src/modules/client-tables/infra/http/client-tables-routes';
+import brandsRoutes from 'src/modules/brands/infra/http/brands-routes';
 
 const mainRoute = Router();
 
-mainRoute.use('/api/tables', clientTablesRoute);
+mainRoute.use('/api/brands', brandsRoutes);
 
 export default mainRoute;

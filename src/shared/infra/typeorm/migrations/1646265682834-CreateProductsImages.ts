@@ -1,22 +1,30 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateBrands1644605382066 implements MigrationInterface {
+export class CreateProductsImages1646265682834 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(new Table({
-      name: 'brands',
+      name: 'products_images',
       columns: [{
         name: 'id',
         type: 'uuid',
+        isNullable: false,
         isPrimary: true,
-        isUnique: true,
-        isNullable: false
+        isUnique: true
       }, {
-        name: 'name',
+        name: 'url',
         type: 'varchar',
-        isNullable: false
-      },
-      {
+        isNullable: false,
+      }, {
+        name: 'path',
+        type: 'varchar',
+        isNullable: false,
+      }, {
+        name: 'products_sku_id',
+        type: 'uuid',
+        isNullable: false,
+        isUnique: true
+      }, {
         name: 'created_at',
         type: 'timestamp',
         default: 'now()',
@@ -33,12 +41,18 @@ export class CreateBrands1644605382066 implements MigrationInterface {
         type: 'timestamp',
         default: null,
         isNullable: true,
+      }],
+      foreignKeys: [{
+        name: 'FKProductsSKU',
+        referencedTableName: 'products_sku',
+        referencedColumnNames: ['id'],
+        columnNames: ['products_sku_id']
       }]
     }))
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('brands')
+    await queryRunner.dropTable('products_images');
   }
 
 }
