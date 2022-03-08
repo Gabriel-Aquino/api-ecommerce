@@ -1,7 +1,7 @@
 import { Response } from "express";
 import { HttpRequest } from "src/shared/presentation/protocols/http";
 import { BrandsRepository } from "../../repositories/brands-repository";
-import { CreateBrandsService } from "../../services/create-brand-service";
+import { CreateBrandsService } from "../../services/create-brands-service";
 
 export class CreateBrandsController {
   async handle(httpRequest: HttpRequest, response: Response): Promise<Response> {

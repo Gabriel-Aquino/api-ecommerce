@@ -33,22 +33,22 @@ export class BrandsRepository implements IBrandsRepository {
     const findBrandsByIdNotDeleted = await this.ormRepository.findOne(id);
     return findBrandsByIdNotDeleted;
   }
-  async findByName(name: string): Promise<Brands[] | undefined> {
+  async findByName(name: string): Promise<Brands[]> {
     const findBrandsByName = await this.ormRepository
       .createQueryBuilder()
       .where(
         'LOWER(name) LIKE :name',
-        { name: `${name.toLowerCase()}` },
+        { name: `%${name.toLowerCase()}%` },
       ).withDeleted().getMany();
 
     return findBrandsByName;
   }
-  async findByNameWithoutDeleted(name: string): Promise<Brands[] | undefined> {
+  async findByNameWithoutDeleted(name: string): Promise<Brands[]> {
     const findBrandsNotDeletedByName = await this.ormRepository
       .createQueryBuilder()
       .where(
         'LOWER(name) LIKE :name',
-        { name: `%${name}%` },
+        { name: `%${name.toLowerCase()}%` },
       ).getMany();
 
     return findBrandsNotDeletedByName;

@@ -1,8 +1,7 @@
 import { Response } from "express";
 import { HttpRequest } from "src/shared/presentation/protocols/http";
-
 import { BrandsRepository } from "../../repositories/brands-repository";
-import { FindByIdBrandService } from "../../services/find-by-id-brand-service";
+import { FindByIdBrandService } from "../../services/find-by-id-brands-service";
 
 export class FindByIdBrandController {
 
