@@ -1,13 +1,9 @@
 import AppError from "src/shared/errors/app-error";
 import { BaseDTO } from "src/shared/utils/base-dto";
 import { UUIDv4 } from "uuid-v4-validator";
+import { UpdateRequest } from "../dtos/update-request";
 import { Brands } from "../infra/typeorm/entities/brands-entity";
 import { IBrandsRepository } from "../repositories/contracts/ibrands-repository";
-
-interface UpdateRequest extends Omit<BaseDTO, 'description'> {
-  id: string;
-  name: string;
-}
 
 export class UpdateBrandsService {
   constructor(private brandsRepository: IBrandsRepository) { }
