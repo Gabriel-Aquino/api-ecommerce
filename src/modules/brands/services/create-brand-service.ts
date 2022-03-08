@@ -7,8 +7,8 @@ export class CreateBrandsService {
   constructor(private brandsRepository: IBrandsRepository) { }
 
   public async execute({ name }: BrandsDTO): Promise<Brands> {
-    if (name === null || name === '') {
-      throw new AppError('Name cannot be null', 400);
+    if (name === null || name === '' || name === undefined) {
+      throw new AppError('Name must be provided', 400);
     }
 
     const createBrands = await this.brandsRepository.create({ name });

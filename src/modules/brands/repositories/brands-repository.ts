@@ -21,7 +21,7 @@ export class BrandsRepository implements IBrandsRepository {
     const findAllBrands = await this.ormRepository.find({ withDeleted: true });
     return findAllBrands;
   }
-  async findNotDeleted(): Promise<Brands[]> {
+  async findAllWithoutDeleted(): Promise<Brands[]> {
     const findNotDeletedBrands = await this.ormRepository.find();
     return findNotDeletedBrands;
   }
@@ -29,7 +29,7 @@ export class BrandsRepository implements IBrandsRepository {
     const findBrandsById = await this.ormRepository.findOne(id, { withDeleted: true })
     return findBrandsById
   }
-  async findByIdNotDeleted(id: string): Promise<Brands | undefined> {
+  async findByIdWithoutDeleted(id: string): Promise<Brands | undefined> {
     const findBrandsByIdNotDeleted = await this.ormRepository.findOne(id);
     return findBrandsByIdNotDeleted;
   }
@@ -43,7 +43,7 @@ export class BrandsRepository implements IBrandsRepository {
 
     return findBrandsByName;
   }
-  async findByNameNotDeleted(name: string): Promise<Brands[] | undefined> {
+  async findByNameWithoutDeleted(name: string): Promise<Brands[] | undefined> {
     const findBrandsNotDeletedByName = await this.ormRepository
       .createQueryBuilder()
       .where(

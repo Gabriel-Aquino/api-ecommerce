@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
-    "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --trace-warnings --ignore-watch node_modules src/index.ts",
+    "dev": "docker start postegres && ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --trace-warnings --ignore-watch node_modules src/index.ts",
+    "build": "tsc",
     "test": "jest --passWithNoTests --watch --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --watch --runInBand",
     "test:unit": "yarn test -- -c jest-unit-config.js",
