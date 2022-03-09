@@ -1,11 +1,13 @@
-import { Repository } from "typeorm";
+import { getRepository, Repository } from "typeorm";
 import { CategoriesDTO } from "../dtos/categories-dto";
 import { Categories } from "../infra/typeorm/entities/categories-entity";
 import { ICategoriesRepository } from "./contracts/icategories-repository";
 
 export class CategoriesRepository implements ICategoriesRepository {
   private ormRepository: Repository<Categories>;
-
+  constructor() {
+    this.ormRepository = getRepository(Categories);
+  }
   async create({ name }: CategoriesDTO): Promise<Categories> {
     const createCategory = this.ormRepository.create({
       name
@@ -16,6 +18,7 @@ export class CategoriesRepository implements ICategoriesRepository {
   }
   async find(): Promise<Categories[]> {
     const allCategories = await this.ormRepository.find({ withDeleted: true })
+    console.log(allCategories);
     return allCategories;
   }
   async findNotDeleted(): Promise<Categories[]> {
