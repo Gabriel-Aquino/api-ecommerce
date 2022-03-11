@@ -5,6 +5,7 @@ import { ICategoriesRepository } from "./contracts/icategories-repository";
 
 export class CategoriesRepository implements ICategoriesRepository {
   private ormRepository: Repository<Categories>;
+
   constructor() {
     this.ormRepository = getRepository(Categories);
   }
@@ -18,7 +19,6 @@ export class CategoriesRepository implements ICategoriesRepository {
   }
   async find(): Promise<Categories[]> {
     const allCategories = await this.ormRepository.find({ withDeleted: true })
-    console.log(allCategories);
     return allCategories;
   }
   async findNotDeleted(): Promise<Categories[]> {
@@ -35,7 +35,7 @@ export class CategoriesRepository implements ICategoriesRepository {
   }
   async findByName(name: string): Promise<Categories[]> {
     const findCategoriesByName = await this.ormRepository.createQueryBuilder().where(
-      'LOWER(name) LIKE : name', {
+      'LOWER(name) LIKE :name', {
       name: `%${name.toLowerCase()}%`
     }).withDeleted().getMany();
 
@@ -43,7 +43,7 @@ export class CategoriesRepository implements ICategoriesRepository {
   }
   async findByNameNotDeleted(name: string): Promise<Categories[]> {
     const findCategoriesByNameNotDeleted = await this.ormRepository.createQueryBuilder().where(
-      'LOWER(name) LIKE : name', {
+      'LOWER(name) LIKE :name', {
       name: `%${name.toLowerCase()}%`
     }).getMany();
 

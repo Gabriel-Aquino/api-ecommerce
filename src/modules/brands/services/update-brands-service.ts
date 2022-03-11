@@ -1,14 +1,14 @@
 import AppError from "src/shared/errors/app-error";
 import { BaseDTO } from "src/shared/utils/base-dto";
 import { UUIDv4 } from "uuid-v4-validator";
-import { UpdateRequest } from "../dtos/update-request";
+import { UpdateBrandsRequest } from "../dtos/update-brands-request";
 import { Brands } from "../infra/typeorm/entities/brands-entity";
 import { IBrandsRepository } from "../repositories/contracts/ibrands-repository";
 
 export class UpdateBrandsService {
   constructor(private brandsRepository: IBrandsRepository) { }
 
-  public async execute({ id, name }: UpdateRequest): Promise<Brands> {
+  public async execute({ id, name }: UpdateBrandsRequest): Promise<Brands> {
     if (!UUIDv4.validate(id)) {
       throw new AppError('id must be provided', 400);
     }
